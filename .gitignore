@@ -1,0 +1,26 @@
+﻿#/MyBlaster.sln
+
+
+Binaries/
+Intermediate/
+Saved/
+obj/
+
+# Build results
+*.user
+*.suo
+*.sln.docstates
+*.cache
+*.userprefs
+*.pidb
+*.iobj
+*.opensdf
+*.opensdf.lock
+*.sdf
+*.sdf.lock
+*.sdf.cache
+*.sdf.cache.lock
+*.sdf.cache.log
+*.sdf.cache.log.lock
+*.sdf.cache.log.old
+*.sdf.cache.log.old.lock
