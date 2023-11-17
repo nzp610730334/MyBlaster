@@ -1134,7 +1134,7 @@ void UCombatComponent::LocalFire(const FVector_NetQuantize& TraceHitTarget)
 	{
 		UE_LOG(LogTemp, Warning, TEXT("本地控制，应用后坐力，允许额外的鼠标输入！！！"));
 		// 额外的鼠标输入
-		// Controller->AddPitchInput(-0.1);
+		Controller->AddPitchInput(-0.1);
 	}
 	
 }
