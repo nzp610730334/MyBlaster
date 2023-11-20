@@ -560,6 +560,11 @@ void ULagCompensationComponent::MoveBoxes(ABlasterCharacter* HitCharacter, const
 {
 	// 受击角色为空，则直接返回即可
 	if(HitCharacter == nullptr) return;
+
+	if(HitCharacter->HitCollisionBoxes.Num() <= 0)
+	{
+		UE_LOG(LogTemp, Warning, TEXT("HitCollisionBoxes.Num() <= 0"))
+	}
 	// 遍历受击角色的所有命中盒子，设置其涉及命中判定的属性
 	for(auto & HitBoxPair : HitCharacter->HitCollisionBoxes)
 	{
@@ -693,9 +698,9 @@ FFramePackage ULagCompensationComponent::GetFrameToCheck(ABlasterCharacter* HitC
 	
 	// 数据读取的代码过长，这里声明新的短名字的引用，便于后续代码编写。该引用不会被修改则使用const修饰，注意引用的类型要与被引用的对象一致
 	const TDoubleLinkedList<FFramePackage>& History = HitCharacter->GetLagCompensation()->FrameHistory;
-	// 手机角色的最老的历史帧信息的时间
+	// 受击角色的最老的历史帧信息的时间
 	const float OldestHistoryTime = History.GetTail()->GetValue().Time;
-	// 手机角色的最新的历史帧信息的时间
+	// 受击角色的最新的历史帧信息的时间
 	const float NewestHistoryTime = History.GetHead()->GetValue().Time;
 
 	// 命中时间早于服务器存储的受击角色的最老的历史帧信息，则不进行服务器倒带

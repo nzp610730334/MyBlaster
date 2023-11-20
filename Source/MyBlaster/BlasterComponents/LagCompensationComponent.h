@@ -125,7 +125,7 @@ public:
 		float HitTime
 	);
 
-	// 客户端向服务器发送RPC请求，告知服务器本客户端命中了其他玩家
+	// 客户端向服务器发送RPC请求，告知服务器本客户端命中了其他玩家。这是射线命中判定使用的服务器倒带函数
 	UFUNCTION(Server, Reliable)
 	void ServerScoreRequest(
 		// 受击角色
@@ -140,7 +140,7 @@ public:
 		// AWeapon* DamageCauser	// P203 原教程修改为 不再向服务器传递造成伤害的武器，而是命中判定时读取攻击者当前的武器。疑惑：玩家射击后马上切换别的武器，切换武器RPC在命中判定RPC之前到达，那么伤害还正确吗？
 		);
 
-	// 客户端向服务器发送RPC请求，告知服务器本客户端的霰弹枪命中了其他玩家
+	// 客户端向服务器发送RPC请求，告知服务器本客户端的霰弹枪命中了其他玩家。这是射线(霰弹枪使用的也是射线)命中判定使用的服务器倒带函数
 	UFUNCTION(Server, Reliable)
 	void ShotgunServerScoreRequest(
 		// 该次射击所有受击角色

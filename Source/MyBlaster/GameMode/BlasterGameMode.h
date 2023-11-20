@@ -39,7 +39,7 @@ public:
 	UPROPERTY(EditDefaultsOnly)
 	float WarmupTime = 10.f;
 
-	// 设置一句游戏的时间长度
+	// 设置一局游戏的时间长度
 	UPROPERTY(EditDefaultsOnly)
 	float MatchTime = 120.f;
 

@@ -87,6 +87,10 @@ public:
 	UPROPERTY(meta=(BindWidget))
 	class UTextBlock* MatchCountdownText;
 
+	// 当前Ping值
+	UPROPERTY(meta=(BindWidget))
+	class UTextBlock* PingValue;
+	
 	// 高Ping警告用的图标
 	UPROPERTY(meta=(BindWidget))
 	class UImage* HighPingImage;

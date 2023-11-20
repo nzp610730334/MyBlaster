@@ -137,6 +137,9 @@ protected:
 	// 停止高Ping警告的显示
 	void StopHighPingWarning();
 
+	// 刷新玩家屏幕上的Ping值
+	void HUDUpdatePing(uint8 PingValue);
+
 	// 检查Ping的值并处理高Ping图标的显示和隐藏
 	void CheckPing(float DeltaTime);
 	

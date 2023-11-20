@@ -85,6 +85,11 @@ void ABlasterPlayerState::AddToDefeats(int32 DefeatsAmount)
 	}
 }
 
+void ABlasterPlayerState::SetCurrentPing(uint8 NewPing)
+{
+	CurrentPing = NewPing;
+}
+
 void ABlasterPlayerState::OnRep_Defeats()
 {
 	// 更新玩家客户端机器的角色的死亡次数信息

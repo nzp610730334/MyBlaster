@@ -188,7 +188,13 @@ void ABlasterPlayerController::CheckPing(float DeltaTime)
 			 * 注意：在网络通信的过程中，UE将Ping的大小缩小到了原本值的1/4，因此需要乘以4获得原本的Ping值
 			 */
 			// UE_LOG(LogTemp, Warning, TEXT("当前Ping值为： %d"), PlayerState->GetPing() * 4);
-			if(PlayerState->GetPing() * 4 >= HighPingThreshold)
+
+			// 获取并刷新Ping值
+			uint8 CurrentPing = PlayerState->GetPing();
+			HUDUpdatePing(CurrentPing);
+			
+			// 判断是否需要显示高Ping图标
+			if(CurrentPing * 4 >= HighPingThreshold)
 			{
 				// 显示高Ping图标
 				HighPingWarning();
@@ -478,6 +484,22 @@ void ABlasterPlayerController::StopHighPingWarning()
 			// 停止该动画的播放
 			BlasterHUD->CharacterOverlay->StopAnimation(BlasterHUD->CharacterOverlay->HighPingAnimation);
 		}
+	}
+}
+
+void ABlasterPlayerController::HUDUpdatePing(uint8 PingValue)
+{
+	// 确保要操作的内容不为空指针。三元运算符，第一次执行本函数时，若为空指针，则Cast转换，后续再执行本函数时，不为空指针直接赋值旧的值即可，类似单例模式的思想
+	BlasterHUD = BlasterHUD == nullptr ? Cast<ABlasterHUD>(GetHUD()) : BlasterHUD;
+
+	// 校验要访问的内容是否为空指针
+	bool bHUDValid = BlasterHUD && BlasterHUD->CharacterOverlay && BlasterHUD->CharacterOverlay->PingValue;
+	if(bHUDValid)
+	{
+		// FloorToInt向下取整
+		FString PingValueText = FString::Printf(TEXT("%d"), PingValue);
+		// 设置分数显示
+		BlasterHUD->CharacterOverlay->PingValue->SetText(FText::FromString(PingValueText));
 	}
 }
 

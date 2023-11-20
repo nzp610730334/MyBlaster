@@ -27,6 +27,12 @@ public:
 	void AddToScore(float ScoreAmount);
 	// 服务器上用于更新玩家的死亡次数的显示
 	void AddToDefeats(int32 DefeatsAmount);
+	// 保存当前Ping值
+	void SetCurrentPing(uint8 NewPing);
+protected:
+	// 当前Ping值
+	UPROPERTY(BlueprintReadOnly)
+	uint8 CurrentPing = 0;
 private:
 	/*
 	 * 原生的代码中，玩家控制器可以直接访问玩家状态的属性，但玩家状态并不能直接访问玩家控制器的属性。

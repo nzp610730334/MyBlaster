@@ -353,7 +353,7 @@ void UCombatComponent::SererSetAmiming_Implementation(bool bIsAiming)
 		// 本函数SererSetAmiming_Implementation只在在服务器执行。此处修改速度，网络复制到所有客户端。
 		Character->GetCharacterMovement()->MaxWalkSpeed = bIsAiming ? AimWalkSpeed : BaseWalkSpeed;
 	}
-	GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Blue, TEXT("收到RPC的SetAiming请求!"));
+	// GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Blue, TEXT("收到RPC的SetAiming请求!"));
 }
 
 void UCombatComponent::OnRep_EquipWeapon()
